@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -9,11 +10,14 @@ public class PlayerController : MonoBehaviour
     
     [Header("Ground Check")]
     [SerializeField]
-    private float playerHeight;
+    public float groundRayOffset = 0.2f;
     public float groundDrag = 7f;
     public LayerMask groundLayerMask;
+    public float groundTimeErrorRate = 0.1f;
     [SerializeField]
     private bool isGrounded;
+    [SerializeField]
+    private float lastGroundedTime;
 
     [Header("Jump")]
     public float airMultiplier = 0.7f;
@@ -29,19 +33,23 @@ public class PlayerController : MonoBehaviour
     [Header("Body parts")]
     public Transform head;
     
+    [Header("Special")]
     [SerializeField]
     private GameInput gameInput;
 
-    private Rigidbody _rigidbody;
-    
     private float _rotationX;
-
-    private const float GroundRayOffset = 0.2f;
     
+    private Rigidbody _rigidbody;
+    private Animator _animator;
+    private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+    private static readonly int IsJumping = Animator.StringToHash("IsJumping");
+    private static readonly int IsLanding = Animator.StringToHash("IsLanding");
+    private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        playerHeight = GetComponent<CapsuleCollider>().height;
+        _animator = GetComponent<Animator>();
         
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -53,17 +61,35 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        isGrounded = Physics.Raycast(
-            transform.position, 
-            Vector3.down, 
-            playerHeight * 0.5f + GroundRayOffset, 
-            groundLayerMask);
+        GroundUpdate();
         
         JumpUpdate();
         LookUpdate();
         DragUpdate();
     }
 
+    private void GroundUpdate()
+    {
+        var rayStart = transform.position;
+        isGrounded = Physics.Raycast(
+            rayStart, 
+            Vector3.down, 
+            groundRayOffset,
+            groundLayerMask);
+        
+        Debug.DrawLine(rayStart, new Vector3(rayStart.x, rayStart.y - groundRayOffset, rayStart.z), Color.red);
+
+        if (Time.time - lastGroundedTime >= groundTimeErrorRate)
+        {
+            _animator.SetBool(IsGrounded, isGrounded);
+        }
+
+        if (isGrounded)
+        {
+            lastGroundedTime = Time.time;
+        }
+    }
+    
     private void MoveUpdate()
     {
         var inputMovement = gameInput.GetMovement();
@@ -71,6 +97,8 @@ public class PlayerController : MonoBehaviour
         
         _rigidbody.AddForce(moveDirection.normalized * (moveSpeed * (isGrounded ? 1.0f : airMultiplier)), 
             ForceMode.Force);
+
+        _animator.SetBool(IsMoving, !inputMovement.Equals(Vector3.zero));
     }
 
     private void DragUpdate()
@@ -94,6 +122,8 @@ public class PlayerController : MonoBehaviour
         _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
         
         _rigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        
+        _animator.SetTrigger(IsJumping);
     }
 
     private void ResetJump()
@@ -104,6 +134,7 @@ public class PlayerController : MonoBehaviour
     private void LookUpdate()
     {
         var inputRotation = gameInput.GetMouseDeltaRotation();
+        inputRotation *= rotationSensitivity;
         
         transform.Rotate(Vector3.up, inputRotation.x);
 
