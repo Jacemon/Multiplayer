@@ -6,7 +6,8 @@ using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed = 28f;
+    public float runSpeed = 28f;
+    public float walkSpeed = 14f;
     
     [Header("Ground Check")]
     [SerializeField]
@@ -93,12 +94,24 @@ public class PlayerController : MonoBehaviour
     private void MoveUpdate()
     {
         var inputMovement = gameInput.GetMovement();
-        var moveDirection = transform.forward * inputMovement.y + transform.right * inputMovement.x;
+        var inputWalk = gameInput.GetWalk();
         
-        _rigidbody.AddForce(moveDirection.normalized * (moveSpeed * (isGrounded ? 1.0f : airMultiplier)), 
-            ForceMode.Force);
+        var moveDirection = transform.forward * inputMovement.y + transform.right * inputMovement.x;
 
-        _animator.SetBool(IsMoving, !inputMovement.Equals(Vector3.zero));
+        if (inputWalk)
+        {
+            _rigidbody.AddForce(moveDirection.normalized * (walkSpeed * (isGrounded ? 1.0f : airMultiplier)),
+                ForceMode.Force);
+
+            _animator.SetInteger(IsMoving, !inputMovement.Equals(Vector3.zero) ? 1 : 0);
+        }
+        else
+        {
+            _rigidbody.AddForce(moveDirection.normalized * (runSpeed * (isGrounded ? 1.0f : airMultiplier)),
+                ForceMode.Force);
+
+            _animator.SetInteger(IsMoving, !inputMovement.Equals(Vector3.zero) ? 2 : 0);
+        }
     }
 
     private void DragUpdate()

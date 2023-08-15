@@ -31,6 +31,11 @@ public class GameInput : MonoBehaviour
         return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     }
 
+    public bool GetWalk()
+    {
+        return !_playerInputActions.Player.Walk.ReadValue<float>().Equals(0);
+    }
+    
     public bool GetJump()
     {
         return !_playerInputActions.Player.Jump.ReadValue<float>().Equals(0);

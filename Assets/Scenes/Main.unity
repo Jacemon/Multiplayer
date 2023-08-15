@@ -11185,6 +11185,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8100297384109567641, guid: e2e34aa2a3ce0b04f9b6a162685b5cdc, type: 3}
+      propertyPath: runSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100297384109567641, guid: e2e34aa2a3ce0b04f9b6a162685b5cdc, type: 3}
+      propertyPath: walkSpeed
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8100297384109567647, guid: e2e34aa2a3ce0b04f9b6a162685b5cdc, type: 3}
       propertyPath: m_Name
       value: Low-Poly Character
