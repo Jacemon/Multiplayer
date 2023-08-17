@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3dcef7c5e24802bf4184a5b891f9e9, type: 3}
+  m_Name: Glock
+  m_EditorClassIdentifier: 
+  name: Glock
+  bullet: {fileID: 4446833804767399557, guid: 2824fd6f45639b64aa4fd9dbe2437933, type: 3}
+  currentAmmo: 16
+  magazineSize: 80
+  fireRate: 0.5
+  reloadTime: 4
+  reloading: 0

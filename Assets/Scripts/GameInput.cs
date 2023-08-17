@@ -3,6 +3,14 @@ using UnityEngine;
 public class GameInput : MonoBehaviour
 {
     private PlayerInputActions _playerInputActions;
+
+    public enum MovementType
+    {
+        Idle,
+        Walk,
+        Run,
+        Sprint
+    }
     
     private void Awake()
     {
@@ -24,20 +32,26 @@ public class GameInput : MonoBehaviour
         return _playerInputActions.Player.Move.ReadValue<Vector2>();
     }
 
-    public Vector2 GetMouseDeltaRotation()
+    public Vector2 GetLook()
     {
-        //return _playerInputActions.Player.Look.ReadValue<Vector2>();
-
-        return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        return _playerInputActions.Player.Look.ReadValue<Vector2>();
     }
 
-    public bool GetWalk()
+    public MovementType GetMovementType()
     {
-        return !_playerInputActions.Player.Walk.ReadValue<float>().Equals(0);
+        if (_playerInputActions.Player.Move.ReadValue<Vector2>().Equals(Vector2.zero)) return MovementType.Idle;
+        if (!_playerInputActions.Player.Walk.ReadValue<float>().Equals(0)) return MovementType.Walk;
+        if (!_playerInputActions.Player.Sprint.ReadValue<float>().Equals(0)) return MovementType.Sprint;
+        return MovementType.Run;
     }
     
     public bool GetJump()
     {
         return !_playerInputActions.Player.Jump.ReadValue<float>().Equals(0);
+    }
+
+    public bool GetShoot()
+    {
+        return !_playerInputActions.Player.Shoot.ReadValue<float>().Equals(0);
     }
 }

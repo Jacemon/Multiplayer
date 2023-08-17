@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float runSpeed = 28f;
+    public float sprintSpeed = 42f;
     public float walkSpeed = 14f;
     
     [Header("Ground Check")]
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     
     [Header("Rotation")]
     public Transform mainCamera;
+    [Range(0.0f, 2.0f)]
     public float rotationSensitivity = 1f;
     public float verticalLimit = 90f;
 
@@ -44,7 +47,6 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private static readonly int IsMoving = Animator.StringToHash("IsMoving");
     private static readonly int IsJumping = Animator.StringToHash("IsJumping");
-    private static readonly int IsLanding = Animator.StringToHash("IsLanding");
     private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
 
     private void Awake()
@@ -93,25 +95,24 @@ public class PlayerController : MonoBehaviour
     
     private void MoveUpdate()
     {
-        var inputMovement = gameInput.GetMovement();
-        var inputWalk = gameInput.GetWalk();
+        var movementType = gameInput.GetMovementType();
         
+        var speed = movementType switch
+        {
+            GameInput.MovementType.Run => runSpeed,
+            GameInput.MovementType.Walk => walkSpeed,
+            GameInput.MovementType.Sprint => sprintSpeed,
+            GameInput.MovementType.Idle => 0.0f,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+        
+        var inputMovement = gameInput.GetMovement();
         var moveDirection = transform.forward * inputMovement.y + transform.right * inputMovement.x;
+        
+        _rigidbody.AddForce(moveDirection.normalized * (speed * (isGrounded ? 1.0f : airMultiplier)),
+            ForceMode.Force);
 
-        if (inputWalk)
-        {
-            _rigidbody.AddForce(moveDirection.normalized * (walkSpeed * (isGrounded ? 1.0f : airMultiplier)),
-                ForceMode.Force);
-
-            _animator.SetInteger(IsMoving, !inputMovement.Equals(Vector3.zero) ? 1 : 0);
-        }
-        else
-        {
-            _rigidbody.AddForce(moveDirection.normalized * (runSpeed * (isGrounded ? 1.0f : airMultiplier)),
-                ForceMode.Force);
-
-            _animator.SetInteger(IsMoving, !inputMovement.Equals(Vector3.zero) ? 2 : 0);
-        }
+        _animator.SetInteger(IsMoving, (int)movementType);
     }
 
     private void DragUpdate()
@@ -146,7 +147,7 @@ public class PlayerController : MonoBehaviour
     
     private void LookUpdate()
     {
-        var inputRotation = gameInput.GetMouseDeltaRotation();
+        var inputRotation = gameInput.GetLook();
         inputRotation *= rotationSensitivity;
         
         transform.Rotate(Vector3.up, inputRotation.x);
@@ -157,5 +158,8 @@ public class PlayerController : MonoBehaviour
         var targetRotation = transform.eulerAngles;
         targetRotation.x = _rotationX;
         mainCamera.eulerAngles = targetRotation;
+
+        // TODO: not working
+        head.eulerAngles = targetRotation;
     }
 }

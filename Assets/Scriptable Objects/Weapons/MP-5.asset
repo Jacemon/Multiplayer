@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3dcef7c5e24802bf4184a5b891f9e9, type: 3}
+  m_Name: MP-5
+  m_EditorClassIdentifier: 
+  name: MP-5
+  bullet: {fileID: -3593685912967625243, guid: 4d1a953f62a1c284fba2af6ecac15244, type: 3}
+  currentAmmo: 25
+  magazineSize: 100
+  fireRate: 0.2
+  reloadTime: 6
+  reloading: 0
