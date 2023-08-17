@@ -32,11 +32,6 @@ public class GameInput : MonoBehaviour
         return _playerInputActions.Player.Move.ReadValue<Vector2>();
     }
 
-    public Vector2 GetLook()
-    {
-        return _playerInputActions.Player.Look.ReadValue<Vector2>();
-    }
-
     public MovementType GetMovementType()
     {
         if (_playerInputActions.Player.Move.ReadValue<Vector2>().Equals(Vector2.zero)) return MovementType.Idle;
@@ -49,9 +44,28 @@ public class GameInput : MonoBehaviour
     {
         return !_playerInputActions.Player.Jump.ReadValue<float>().Equals(0);
     }
-
+    
+    public Vector2 GetLook()
+    {
+        return _playerInputActions.Player.Look.ReadValue<Vector2>();
+    }
+    
     public bool GetShoot()
     {
         return !_playerInputActions.Player.Shoot.ReadValue<float>().Equals(0);
+    }
+
+    public int GetSwitch()
+    {
+        if (_playerInputActions.Player.Change.ReadValue<float>() < 0)
+        {
+            return -1;
+        }
+        if (_playerInputActions.Player.Change.ReadValue<float>() > 0)
+        {
+            return 1;
+        }
+
+        return 0;
     }
 }

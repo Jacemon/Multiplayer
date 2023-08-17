@@ -15,6 +15,24 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "459f9366-bcd4-428e-b923-e13bce2875e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Walk",
+                    "type": "Button",
+                    "id": "9f5c5298-cc21-484e-89f0-7dda1969da73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "72cf4c17-deb9-4d84-95ee-7036949ca001",
@@ -33,24 +51,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Walk",
-                    "type": "Button",
-                    "id": "9f5c5298-cc21-484e-89f0-7dda1969da73",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Sprint",
-                    "type": "Button",
-                    "id": "459f9366-bcd4-428e-b923-e13bce2875e1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Shoot",
                     "type": "Button",
                     "id": "bccaee61-a649-4038-9c31-7e2582472e37",
@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Change",
+                    "type": "Value",
+                    "id": "b83ed3af-fedf-43fe-bb7b-2959bae0f9c8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -151,28 +160,6 @@
                 },
                 {
                     "name": "",
-                    "id": "42825ca0-0c64-4d40-9e37-02e1b9f61ff8",
-                    "path": "<Keyboard>/leftAlt",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Walk",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "092e2fa8-0734-4953-832a-313c0cca7789",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "08eb7dd2-cbc5-4dbb-bb4d-409070b94959",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -190,6 +177,39 @@
                     "processors": "",
                     "groups": "Android+iOS",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "092e2fa8-0734-4953-832a-313c0cca7789",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42825ca0-0c64-4d40-9e37-02e1b9f61ff8",
+                    "path": "<Keyboard>/leftAlt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9a0ed3c-e5fe-4606-8ea6-6f62cd16e831",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Change",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

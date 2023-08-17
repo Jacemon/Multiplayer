@@ -10,11 +10,9 @@ namespace Scriptable_Objects.Weapons
         public Bullet bullet;
         
         [Header("Reloading")]
-        public int currentAmmo;
+        public int ammoSize;
         public int magazineSize;
         public float fireRate;
         public float reloadTime;
-        [HideInInspector]
-        public bool reloading;
     }
 }
