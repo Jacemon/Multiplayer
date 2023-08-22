@@ -17,9 +17,9 @@ namespace Entities.Weapons
         [SerializeField]
         private float timeSinceLastShoot;
 
-        private bool CanShoot() => !reloading && timeSinceLastShoot >= 1f / (gunData.fireRate / 60f);
+        private bool CanShoot() => !reloading && timeSinceLastShoot >= 1f / gunData.fireRate;
 
-        private void Shoot()
+        public override void Attack()
         {
             if (gunData == null)
             {
@@ -36,14 +36,21 @@ namespace Entities.Weapons
                     
                     Debug.Log($"Gun {name} has fired");
                     
-                    var bullet = Instantiate(gunData.bullet, muzzle);
+                    var bullet = Instantiate(gunData.bullet, muzzle.position, muzzle.rotation);
                     bullet.Shoot();
+
+                    timeSinceLastShoot = 0;
                 }
+            }
+            else
+            {
+                Debug.Log($"Gun {name} can not fire");
             }
         }
 
         private void Update()
         {
+            timeSinceLastShoot += Time.deltaTime;
             Debug.DrawRay(muzzle.position, -transform.right, Color.yellow);
         }
     }

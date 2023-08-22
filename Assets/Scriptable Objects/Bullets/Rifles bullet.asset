@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3dcef7c5e24802bf4184a5b891f9e9, type: 3}
-  m_Name: MP-5
+  m_Script: {fileID: 11500000, guid: 5e938edabd134dbfa93998fc3f17f00d, type: 3}
+  m_Name: Rifles bullet
   m_EditorClassIdentifier: 
-  name: MP-5
-  bullet: {fileID: -3593685912967625243, guid: 4d1a953f62a1c284fba2af6ecac15244, type: 3}
-  ammoSize: 20
-  magazineSize: 100
-  fireRate: 10
-  reloadTime: 6
+  name: Pistol bullet
+  speed: 20
+  damage: 20
+  maxDistance: 100

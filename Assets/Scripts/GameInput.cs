@@ -50,7 +50,7 @@ public class GameInput : MonoBehaviour
         return _playerInputActions.Player.Look.ReadValue<Vector2>();
     }
     
-    public bool GetShoot()
+    public bool GetAttack()
     {
         return !_playerInputActions.Player.Shoot.ReadValue<float>().Equals(0);
     }

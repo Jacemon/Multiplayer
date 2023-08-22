@@ -16,5 +16,5 @@ MonoBehaviour:
   bullet: {fileID: 4446833804767399557, guid: 2824fd6f45639b64aa4fd9dbe2437933, type: 3}
   ammoSize: 16
   magazineSize: 80
-  fireRate: 0.5
+  fireRate: 4
   reloadTime: 4

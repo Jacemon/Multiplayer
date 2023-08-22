@@ -22,9 +22,9 @@ public class WeaponController : MonoBehaviour
     {
         SwitchWeapon();
 
-        if (gameInput.GetShoot())
+        if (gameInput.GetAttack())
         {
-            Shoot();
+            Attack();
         }
     }
 
@@ -44,8 +44,8 @@ public class WeaponController : MonoBehaviour
         weapons[_currentWeapon].gameObject.SetActive(true);
     }
 
-    private void Shoot()
+    private void Attack()
     {
-        
+        weapons[_currentWeapon].Attack();
     }
 }
