@@ -30,7 +30,7 @@ namespace Entities.Bullets
                 return;
             }
             
-            _rigidbody.AddForce(transform.forward * bulletData.speed, ForceMode.Impulse);
+            _rigidbody.AddForce(-transform.right * bulletData.speed, ForceMode.Impulse);
             
             Debug.Log($"Bullet {name} was fired");
             

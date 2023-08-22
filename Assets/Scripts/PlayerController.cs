@@ -160,6 +160,6 @@ public class PlayerController : MonoBehaviour
         mainCamera.eulerAngles = targetRotation;
 
         // TODO: not working
-        head.eulerAngles = targetRotation;
+        // head.eulerAngles = targetRotation;
     }
 }
