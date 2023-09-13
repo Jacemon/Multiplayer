@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -34,8 +33,8 @@ public class PlayerController : MonoBehaviour
     public float rotationSensitivity = 1f;
     public float verticalLimit = 90f;
 
-    [Header("Body parts")]
-    public Transform head;
+    // [Header("Body parts")]
+    // public Transform head;
     
     [Header("Special")]
     [SerializeField]
@@ -45,9 +44,11 @@ public class PlayerController : MonoBehaviour
     
     private Rigidbody _rigidbody;
     private Animator _animator;
-    private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+    private static readonly int MovingState = Animator.StringToHash("MovingState");
     private static readonly int IsJumping = Animator.StringToHash("IsJumping");
     private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
+    private static readonly int V = Animator.StringToHash("v");
+    private static readonly int H = Animator.StringToHash("h");
 
     private void Awake()
     {
@@ -96,7 +97,6 @@ public class PlayerController : MonoBehaviour
     private void MoveUpdate()
     {
         var movementType = gameInput.GetMovementType();
-        
         var speed = movementType switch
         {
             GameInput.MovementType.Run => runSpeed,
@@ -112,7 +112,10 @@ public class PlayerController : MonoBehaviour
         _rigidbody.AddForce(moveDirection.normalized * (speed * (isGrounded ? 1.0f : airMultiplier)),
             ForceMode.Force);
 
-        _animator.SetInteger(IsMoving, (int)movementType);
+        _animator.SetFloat(H, inputMovement.x);
+        _animator.SetFloat(V, inputMovement.y);
+        
+        _animator.SetFloat(MovingState, (float)movementType);
     }
 
     private void DragUpdate()

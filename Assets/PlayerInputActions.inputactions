@@ -51,9 +51,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "bccaee61-a649-4038-9c31-7e2582472e37",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "ea6ef86b-37c2-464a-b229-8d9ee159ec50",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -160,28 +169,6 @@
                 },
                 {
                     "name": "",
-                    "id": "08eb7dd2-cbc5-4dbb-bb4d-409070b94959",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9fa38f02-7c0f-4450-9271-a21411e0c2e7",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Android+iOS",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "092e2fa8-0734-4953-832a-313c0cca7789",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
@@ -210,6 +197,39 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Change",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c814244-8d65-4a67-98ee-f4e8b73bb654",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08eb7dd2-cbc5-4dbb-bb4d-409070b94959",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9fa38f02-7c0f-4450-9271-a21411e0c2e7",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Android+iOS",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

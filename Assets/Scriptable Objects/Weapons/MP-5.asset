@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: MP-5
   m_EditorClassIdentifier: 
   name: MP-5
+  weaponType: 3
+  attackRate: 5
   bullet: {fileID: -3593685912967625243, guid: 4d1a953f62a1c284fba2af6ecac15244, type: 3}
   ammoSize: 20
   magazineSize: 100
-  fireRate: 10
   reloadTime: 6

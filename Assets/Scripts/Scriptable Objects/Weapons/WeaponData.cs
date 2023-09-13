@@ -6,5 +6,17 @@ namespace Scriptable_Objects.Weapons
     {
         [Header("Info")]
         public new string name;
+        public WeaponType weaponType;
+
+        [Tooltip("rps")]
+        public float attackRate;
+        
+        public enum WeaponType
+        {
+            Hands,
+            Knife,
+            Pistol,
+            Rifle
+        }
     }
 }

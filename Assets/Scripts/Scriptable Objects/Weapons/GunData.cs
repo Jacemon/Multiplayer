@@ -12,8 +12,7 @@ namespace Scriptable_Objects.Weapons
         [Header("Reloading")]
         public int ammoSize;
         public int magazineSize;
-        [Tooltip("rps")]
-        public float fireRate;
+        
         [Tooltip("seconds")]
         public float reloadTime;
     }
