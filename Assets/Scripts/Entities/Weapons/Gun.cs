@@ -27,10 +27,10 @@ namespace Entities.Weapons
             if (gunData.ammoSize > 0 && CanAttack())
             {
                 var muzzlePosition = muzzle.position;
-
+                
                 var cameraTransform = PlayerController.camera.transform;
                 var ray = new Ray(cameraTransform.position, cameraTransform.forward);
-        
+                
                 var hitDistance = gunData.bullet.bulletData.maxDistance;
                 
                 Debug.DrawRay(cameraTransform.position, cameraTransform.forward * hitDistance, Color.blue);
