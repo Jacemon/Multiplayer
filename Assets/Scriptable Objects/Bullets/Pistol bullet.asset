@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pistol bullet
   speed: 20
-  damage: 20
-  maxDistance: 100
+  damage: 10
+  maxDistance: 50

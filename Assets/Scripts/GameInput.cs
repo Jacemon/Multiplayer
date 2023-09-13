@@ -32,9 +32,14 @@ public class GameInput : MonoBehaviour
     private void OnEnable()
     {
         _playerInputActions.Player.Enable();
+    }
 
-        _playerInputActions.Player.Attack.performed += DoAttack;
-        _playerInputActions.Player.Attack.Enable();
+    private void Update()
+    {
+        if (GetAttack())
+        {
+            onAttack.Invoke();
+        }
     }
 
     private void OnDisable()

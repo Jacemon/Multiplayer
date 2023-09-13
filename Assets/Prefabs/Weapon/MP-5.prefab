@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 147346554812401107}
   - component: {fileID: 6954999235188494632}
   - component: {fileID: 5973881241302718398}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_02_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6559362985659250037}
   - component: {fileID: 8003487559718047747}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MP-5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,10 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: d833c197e5e671f46aefb5f544463879, type: 2}
-  data: {fileID: 11400000, guid: d833c197e5e671f46aefb5f544463879, type: 2}
+  timeSinceLastAttack: 0
   muzzle: {fileID: 6530318649858334630}
   reloading: 0
-  timeSinceLastShoot: 0
 --- !u!1 &5836183803064680627
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +174,7 @@ GameObject:
   - component: {fileID: 1516268732596095734}
   - component: {fileID: 930050485265836895}
   - component: {fileID: 7276040947980279509}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_02_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +280,7 @@ GameObject:
   - component: {fileID: 1114251928721181772}
   - component: {fileID: 452387194236927299}
   - component: {fileID: 6740514283268044895}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_02_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6530318649858334630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6399092789123648150}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.6562, y: 0.084, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -418,7 +417,7 @@ GameObject:
   - component: {fileID: 7269915777578459166}
   - component: {fileID: 4674392848918489184}
   - component: {fileID: 4028996558340236304}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +523,7 @@ GameObject:
   - component: {fileID: 8789160855611009177}
   - component: {fileID: 9008831621044463944}
   - component: {fileID: 1323172193802220165}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_02_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +629,7 @@ GameObject:
   - component: {fileID: 7527377165839464338}
   - component: {fileID: 6934935622065414979}
   - component: {fileID: 1236245161484925392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_02_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +735,7 @@ GameObject:
   - component: {fileID: 4388394057938929558}
   - component: {fileID: 9160123578403175607}
   - component: {fileID: 3414436542776400382}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_02_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

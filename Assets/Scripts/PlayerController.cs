@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : HealthHolder
 {
     [Header("Movement")]
     public float runSpeed = 28f;
@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     // [Header("Body parts")]
     // public Transform head;
+
+    public new static Camera camera;
     
     [Header("Special")]
     [SerializeField]
@@ -54,6 +56,8 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+
+        camera = mainCamera.GetComponent<Camera>();
         
         Cursor.lockState = CursorLockMode.Locked;
     }

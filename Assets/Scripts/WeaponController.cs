@@ -66,7 +66,7 @@ public class WeaponController : MonoBehaviour
         _currentWeapon += switchWeapon;
         
         if (_currentWeapon > weapons.Count - 1) _currentWeapon = 0;
-        else if (_currentWeapon < -1) _currentWeapon = weapons.Count - 1;
+        else if (_currentWeapon < 0) _currentWeapon = weapons.Count - 1;
         
         SetWeapon();
     }

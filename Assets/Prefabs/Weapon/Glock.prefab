@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2984087062438588010}
   - component: {fileID: 2072397264756412093}
   - component: {fileID: 8000606548106427307}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_01_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 407950167034340224}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5738456080911321149}
   - component: {fileID: 3679219681117427779}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,9 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3db0a55e482447ca8f9a911a6094f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: c56c118fdd6818544af6506f4fce5165, type: 2}
+  data: {fileID: 0}
+  timeSinceLastAttack: 0
   muzzle: {fileID: 407950167034340224}
-  timeSinceLastShoot: 0
+  reloading: 0
 --- !u!1 &6650470630134122455
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +202,7 @@ GameObject:
   - component: {fileID: 3141442408904332027}
   - component: {fileID: 3022981560694259401}
   - component: {fileID: 6046095663842076106}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_01_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +308,7 @@ GameObject:
   - component: {fileID: 4584101929267674204}
   - component: {fileID: 2952207158904981720}
   - component: {fileID: 8765265625684021415}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +414,7 @@ GameObject:
   - component: {fileID: 4750580526164418305}
   - component: {fileID: 9136702200399345792}
   - component: {fileID: 7237317679767152662}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon_01_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4412410245660647037}
   - component: {fileID: 4966747402883032672}
   - component: {fileID: 2212764377986789209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletLite_02_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4713719514245437058}
   - component: {fileID: -3593685912967625243}
   - component: {fileID: 7952163081874770753}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MP-5 Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletData: {fileID: 11400000, guid: 8c4bdc16b3ce9c241a2fa21120db3205, type: 2}
-  destroyTime: 2
+  delayBeforeDestroy: 20
+  additionalRotation: {x: 0, y: 90, z: 0}
 --- !u!54 &7952163081874770753
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,10 +178,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &8087445199789049519
 GameObject:
@@ -194,7 +195,7 @@ GameObject:
   - component: {fileID: 2623390232990987660}
   - component: {fileID: 4553292675017405120}
   - component: {fileID: 2030921910706445485}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletLite_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

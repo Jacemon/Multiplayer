@@ -5,36 +5,37 @@ using UnityEngine;
 namespace Entities.Bullets
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour, IDamageable
     {
         [Header("References")]
         public BulletData bulletData;
 
         [Header("Settings")]
         [SerializeField]
-        private float delayBeforeDestroy = 2.0f;
+        private float delayBeforeDestroy = 20.0f;
         
-        private Rigidbody _rigidbody;
+        [Header("Special settings")]
+        public Vector3 additionalRotation;
 
         private void Awake()
         {
             Debug.Log($"Bullet {name} was instantiated");
-            _rigidbody = GetComponent<Rigidbody>();
-        }
-
-        public void Shoot()
-        {
-            if (bulletData == null)
-            {
-                Debug.Log("Bullet data was not set!");
-                return;
-            }
-            
-            _rigidbody.AddForce(-transform.right * bulletData.speed, ForceMode.Impulse);
-            
-            Debug.Log($"Bullet {name} was fired");
             
             Destroy(gameObject, delayBeforeDestroy);
+        }
+
+        public void Damage(float damage)
+        {
+            Destroy(gameObject);
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if(other.transform.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.Damage(bulletData.damage);
+            }
+            Destroy(gameObject);
         }
 
         private void OnDestroy()
